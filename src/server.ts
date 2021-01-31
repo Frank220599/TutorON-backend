@@ -36,13 +36,16 @@ const server = useExpressServer(app, {
     }
 });
 
-
 db().then(r => {
-    const port = process.env.PORT || 8080;
+    console.log('connected to db')
     server.listen(port, () => {
+
         if (process.env.NODE_ENV !== 'test')
             console.log(`Server up and running on port ${port}`)
     })
-})
+}).catch(e => console.log(e))
+const port = process.env.PORT || 8080;
+
+
 
 export default server

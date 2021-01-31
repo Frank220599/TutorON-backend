@@ -27,26 +27,26 @@ module.exports = {
     "username": config.DATABASE_USER,
     "password": config.DATABASE_PASSWORD,
     "database": config.DATABASE_NAME,
-    "synchronize": true,
+    "synchronize": false,
     "logging": false,
     "seeds": [
-        __dirname + "/src/database/seeds/**/*.ts"
+        "../src/database/seeds/**/*.ts"
     ],
     "factories": [
-        __dirname + "/src/database/factories/**/*.ts"
+        "../src/database/factories/**/*.ts"
     ],
     "entities": [
-        __dirname + "/src/database/entities/**/*.ts"
+        "../src/database/entities/**/*.ts"
     ],
     "migrations": [
-        __dirname + "/src/database/migrations/**/*.ts"
+        "../src/database/migrations/**/*.ts"
     ],
     "subscribers": [
-        __dirname + "/src/database/subscribers/**/*.ts"
+        "../src/database/subscribers/**/*.ts"
     ],
     "cli": {
-        "entitiesDir": __dirname + "/src/database/entities",
-        "migrationsDir": __dirname + "/src/database/migrations",
-        "subscribersDir": __dirname + "/src/database/subscribers"
+        "entitiesDir": "../src/database/entities",
+        "migrationsDir": "../src/database/migrations",
+        "subscribersDir": "../src/database/subscribers"
     }
 };

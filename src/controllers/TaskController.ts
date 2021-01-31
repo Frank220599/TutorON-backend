@@ -39,7 +39,7 @@ export class TaskController {
                 right_answers: stringToSimpleJson(item.right_answers)
             }));
 
-            await res.json({...data, data: normalized})
+            return await res.json({...data, data: normalized})
 
         } catch (error) {
             return res.json({error})
