@@ -30,23 +30,23 @@ module.exports = {
     "synchronize": true,
     "logging": false,
     "seeds": [
-        "src/database/seeds/**/*.ts"
+        __dirname + "/src/database/seeds/**/*.ts"
     ],
     "factories": [
-        "src/database/factories/**/*.ts"
+        __dirname + "/src/database/factories/**/*.ts"
     ],
     "entities": [
-        "src/database/entities/**/*.ts"
+        __dirname + "/src/database/entities/**/*.ts"
     ],
     "migrations": [
-        "src/database/migrations/**/*.ts"
+        __dirname + "/src/database/migrations/**/*.ts"
     ],
     "subscribers": [
-        "src/database/subscribers/**/*.ts"
+        __dirname + "/src/database/subscribers/**/*.ts"
     ],
     "cli": {
-        "entitiesDir": "src/database/entities",
-        "migrationsDir": "src/database/migrations",
-        "subscribersDir": "src/database/subscribers"
+        "entitiesDir": __dirname + "/src/database/entities",
+        "migrationsDir": __dirname + "/src/database/migrations",
+        "subscribersDir": __dirname + "/src/database/subscribers"
     }
 };
