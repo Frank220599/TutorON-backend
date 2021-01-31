@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === 'development') {
     }
 }
 
+
 module.exports = {
     "type": "mysql",
     "host": config.DATABASE_HOST,
@@ -30,19 +31,19 @@ module.exports = {
     "synchronize": false,
     "logging": false,
     "seeds": [
-        "../src/database/seeds/**/*.ts"
+        __dirname + "/src/database/seeds/**/*.ts"
     ],
     "factories": [
-        "../src/database/factories/**/*.ts"
+        __dirname + "/src/database/factories/**/*.ts"
     ],
     "entities": [
-        "../src/database/entities/**/*.ts"
+        __dirname + "/src/database/entities/index.ts"
     ],
     "migrations": [
-        "../src/database/migrations/**/*.ts"
+        __dirname + "/src/database/migrations/**/*.ts"
     ],
     "subscribers": [
-        "../src/database/subscribers/**/*.ts"
+        __dirname + "/src/database/subscribers/**/*.ts"
     ],
     "cli": {
         "entitiesDir": "../src/database/entities",
