@@ -1,24 +1,25 @@
 import {Response, Request} from "express";
 import {
     Get,
-    JsonController,
     Param,
     Req,
     Res,
-    NotFoundError,
     Post,
     Body,
     UploadedFile,
+    NotFoundError,
+    JsonController,
 } from "routing-controllers"
 import {getCustomRepository} from "typeorm";
-import FormConstructorRepository from "../repositories/FormConstructorRepository";
+import FormRepository from "../repositories/FormRepository";
 import LessonDTO from "../dto/LessonDTO";
 import upload from "../middlewares/upload";
+import {log} from "util";
 
-@JsonController("/lessons")
-export class FormConstructorController {
+@JsonController("/forms")
+export class FormController {
 
-    private readonly repository = getCustomRepository(FormConstructorRepository);
+    private readonly repository = getCustomRepository(FormRepository);
 
     @Get("/")
     public async getAll(@Res() res: Response, @Req() req: Request): Promise<any> {
@@ -41,7 +42,11 @@ export class FormConstructorController {
                 res.statusCode = 404;
                 throw new NotFoundError('course not found');
             }
-            return await res.json(data)
+            const normalized = {
+                ...data,
+                fields: JSON.parse(data.fields)
+            }
+            return await res.json({data: normalized})
         } catch (error) {
             return res.json({error})
         }
@@ -49,19 +54,17 @@ export class FormConstructorController {
 
     @Post("/")
     public async create(
-        @Body() newLesson: LessonDTO,
-        @UploadedFile('file', {
+        @Body() newLesson: any,
+        @UploadedFile('template', {
             required: true,
-            options: upload('uploads/documents', ['application/pdf']),
-        }) file: any,
+            options: upload('uploads/documents'),
+        }) template: any,
         @Res() res: Response,
         @Req() req: any,
     ): Promise<any> {
         try {
-            const data = await this.repository.create({
-                ...newLesson,
-                file: file?.path
-            });
+            console.log({newLesson})
+            const data = await this.repository.create({...newLesson, template: template?.path});
             return await res.json(data)
         } catch (error) {
             if (res.statusCode === 200) res.statusCode = 400

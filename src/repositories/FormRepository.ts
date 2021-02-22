@@ -1,12 +1,11 @@
 import {EntityRepository} from "typeorm"
 import CrudRepository from "../utils/CrudRepository";
-import Lesson from "../database/entities/Lesson";
-import LessonDTO from "../dto/LessonDTO";
+import {Form} from "../database/entities";
 
-@EntityRepository(Lesson)
-class FormConstructorRepository extends CrudRepository<Lesson, LessonDTO> {
+@EntityRepository(Form)
+class FormRepository extends CrudRepository<Form, any> {
 
 }
 
 
-export default FormConstructorRepository;
+export default FormRepository;

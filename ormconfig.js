@@ -2,10 +2,10 @@ let config;
 
 if (process.env.NODE_ENV === 'development') {
     config = {
-        DATABASE_URL: 'mysql://root:2205@localhost:3306/tutor_on',
+        DATABASE_URL: 'mysql://root:2205@localhost:3306/ddgi',
         DATABASE_USER: 'root',
         DATABASE_PASSWORD: '2205',
-        DATABASE_NAME: 'tutor_on',
+        DATABASE_NAME: 'ddgi',
         DATABASE_HOST: 'localhost',
         DATABASE_PORT: 3306
     }
@@ -28,7 +28,7 @@ module.exports = {
     "username": config.DATABASE_USER,
     "password": config.DATABASE_PASSWORD,
     "database": config.DATABASE_NAME,
-    "synchronize": false,
+    "synchronize": true,
     "logging": false,
     "seeds": [
         __dirname + "/src/database/seeds/**/*.ts"

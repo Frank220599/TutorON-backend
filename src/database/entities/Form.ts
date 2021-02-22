@@ -1,25 +1,20 @@
-import {Entity, Column, ManyToOne, OneToMany} from "typeorm";
+import {Entity, Column} from "typeorm";
 import {BaseEntity} from "./core/BaseEntity";
-import {Course, Task} from "../entities";
 
-@Entity({name: 'lessons'})
-class Lesson extends BaseEntity {
+@Entity({name: 'forms'})
+class Form extends BaseEntity {
+
+    @Column({nullable: true})
+    public productId: string;
+
+    @Column({type: "json"})
+    public fields: string;
 
     @Column()
-    public title: string;
+    public template: string;
 
-    @Column()
-    public description: string;
 
-    @Column()
-    file: string
-
-    @ManyToOne(() => Course, course => course.lessons, {nullable: false})
-    course: Course;
-
-    @OneToMany(() => Task, task => task.lesson)
-    tasks: Task[]
 }
 
 
-export default Lesson;
+export default Form;
