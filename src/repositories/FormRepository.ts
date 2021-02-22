@@ -4,9 +4,9 @@ import Lesson from "../database/entities/Lesson";
 import LessonDTO from "../dto/LessonDTO";
 
 @EntityRepository(Lesson)
-class LessonRepository extends CrudRepository<Lesson, LessonDTO> {
+class FormConstructorRepository extends CrudRepository<Lesson, LessonDTO> {
 
 }
 
 
-export default LessonRepository;
+export default FormConstructorRepository;

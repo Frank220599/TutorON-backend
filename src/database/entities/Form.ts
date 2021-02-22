@@ -1,8 +1,6 @@
 import {Entity, Column, ManyToOne, OneToMany} from "typeorm";
 import {BaseEntity} from "./core/BaseEntity";
-import Course from "./Course";
-import Task from "./Task";
-
+import {Course, Task} from "../entities";
 
 @Entity({name: 'lessons'})
 class Lesson extends BaseEntity {
